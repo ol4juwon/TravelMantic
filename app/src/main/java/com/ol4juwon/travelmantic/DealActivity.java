@@ -57,6 +57,7 @@ public class DealActivity extends AppCompatActivity {
                 deleteDeal();
                 Toast.makeText(this,"Deal Deleted",Toast.LENGTH_SHORT).show();
                 backToList();
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
 

@@ -40,6 +40,8 @@ public class DealAdapter extends RecyclerView.Adapter<DealAdapter.DealViewHolder
 
                 Log.d(td.getTitle(), "onChildAdded: ");
                 td.setId(dataSnapshot.getKey());
+                //deals.clear();
+                //deals.size();
                 deals.add(td);
                 notifyItemInserted(deals.size()-1);
             }
@@ -48,7 +50,7 @@ public class DealAdapter extends RecyclerView.Adapter<DealAdapter.DealViewHolder
             public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
 
 
-                TravelDeal td = snapshot.getValue(TravelDeal.class);
+
             }
 
             @Override
