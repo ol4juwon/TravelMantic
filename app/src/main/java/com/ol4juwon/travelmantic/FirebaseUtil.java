@@ -35,6 +35,9 @@ public class FirebaseUtil {
             mAuthListener = new FirebaseAuth.AuthStateListener() {
                 @Override
                 public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                    if(firebaseAuth.getCurrentUser() == null) {
+                        FirebaseUtil.signIn();
+                    }
                     Toast.makeText(callerActivity.getBaseContext(),"Welcome back", Toast.LENGTH_LONG).show();
 
 
@@ -69,4 +72,6 @@ public class FirebaseUtil {
     public static void detachListener(){
         mFirebaseAuth.removeAuthStateListener(mAuthListener);
     }
+
+
 }
