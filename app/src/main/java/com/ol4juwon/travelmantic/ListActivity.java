@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -43,6 +44,13 @@ public class ListActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.list_activity_menu,menu);
+        MenuItem insert_menu = menu.findItem(R.id.insert_menu);
+        if(FirebaseUtil.isAdmin == true) {
+            insert_menu.setVisible(true);
+            Toast.makeText(this, "I am admin",Toast.LENGTH_SHORT).show();
+        }else{
+            insert_menu.setVisible(false);
+        }
         return true;
     }
 
@@ -78,6 +86,9 @@ public class ListActivity extends AppCompatActivity {
         FirebaseUtil.detachListener();
     }
 
+    protected void showMenu(){
+        invalidateOptionsMenu();
+    }
     @Override
     protected void onResume() {
         super.onResume();
